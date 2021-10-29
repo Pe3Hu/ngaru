@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://vial/vial.gd" type="Script" id=1]
+[ext_resource path="res://blank/blank.gd" type="Script" id=1]
 
-[node name="vial" type="PanelContainer"]
-visible = false
+[node name="blank" type="PanelContainer"]
 margin_right = 14.0
 margin_bottom = 14.0
 script = ExtResource( 1 )
