@@ -18,7 +18,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="flags" type="GridContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 143.0
@@ -28,11 +28,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cargo" type="VBoxContainer" parent="GridContainer"]
+[node name="cargo" type="VBoxContainer" parent="flags"]
 margin_right = 24.0
 margin_bottom = 52.0
 
-[node name="onslaught" type="CheckBox" parent="GridContainer/cargo"]
+[node name="onslaught" type="CheckBox" parent="flags/cargo"]
 margin_right = 24.0
 margin_bottom = 24.0
 grow_horizontal = 0
@@ -41,14 +41,14 @@ custom_icons/unchecked = ExtResource( 3 )
 align = 2
 expand_icon = true
 
-[node name="retention" type="CheckBox" parent="GridContainer/cargo"]
+[node name="retention" type="CheckBox" parent="flags/cargo"]
 margin_top = 28.0
 margin_right = 24.0
 margin_bottom = 52.0
 custom_icons/checked = ExtResource( 6 )
 custom_icons/unchecked = ExtResource( 3 )
 
-[node name="recce" type="VBoxContainer" parent="GridContainer"]
+[node name="recce" type="VBoxContainer" parent="flags"]
 margin_left = 28.0
 margin_right = 52.0
 margin_bottom = 52.0
@@ -56,7 +56,7 @@ rect_min_size = Vector2( 20, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="onslaught" type="CheckBox" parent="GridContainer/recce"]
+[node name="onslaught" type="CheckBox" parent="flags/recce"]
 margin_right = 24.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 15, 15 )
@@ -64,7 +64,7 @@ custom_icons/checked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 3 )
 align = 1
 
-[node name="retention" type="CheckBox" parent="GridContainer/recce"]
+[node name="retention" type="CheckBox" parent="flags/recce"]
 margin_top = 28.0
 margin_right = 24.0
 margin_bottom = 52.0
@@ -73,7 +73,7 @@ custom_icons/checked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 3 )
 align = 1
 
-[node name="depth" type="VBoxContainer" parent="GridContainer"]
+[node name="feint" type="VBoxContainer" parent="flags"]
 margin_left = 56.0
 margin_right = 80.0
 margin_bottom = 52.0
@@ -81,20 +81,20 @@ rect_min_size = Vector2( 20, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="onslaught" type="CheckBox" parent="GridContainer/depth"]
+[node name="onslaught" type="CheckBox" parent="flags/feint"]
 margin_right = 24.0
 margin_bottom = 24.0
 custom_icons/checked = ExtResource( 4 )
 custom_icons/unchecked = ExtResource( 3 )
 
-[node name="retention" type="CheckBox" parent="GridContainer/depth"]
+[node name="retention" type="CheckBox" parent="flags/feint"]
 margin_top = 28.0
 margin_right = 24.0
 margin_bottom = 52.0
 custom_icons/checked = ExtResource( 4 )
 custom_icons/unchecked = ExtResource( 3 )
 
-[node name="feint" type="VBoxContainer" parent="GridContainer"]
+[node name="depth" type="VBoxContainer" parent="flags"]
 margin_left = 84.0
 margin_right = 108.0
 margin_bottom = 52.0
@@ -102,20 +102,20 @@ rect_min_size = Vector2( 20, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="onslaught" type="CheckBox" parent="GridContainer/feint"]
+[node name="onslaught" type="CheckBox" parent="flags/depth"]
 margin_right = 24.0
 margin_bottom = 24.0
 custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 3 )
 
-[node name="retention" type="CheckBox" parent="GridContainer/feint"]
+[node name="retention" type="CheckBox" parent="flags/depth"]
 margin_top = 28.0
 margin_right = 24.0
 margin_bottom = 52.0
 custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 3 )
 
-[node name="spoof" type="VBoxContainer" parent="GridContainer"]
+[node name="spoof" type="VBoxContainer" parent="flags"]
 margin_left = 112.0
 margin_right = 136.0
 margin_bottom = 52.0
@@ -123,13 +123,13 @@ rect_min_size = Vector2( 16, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="onslaught" type="CheckBox" parent="GridContainer/spoof"]
+[node name="onslaught" type="CheckBox" parent="flags/spoof"]
 margin_right = 24.0
 margin_bottom = 24.0
 custom_icons/checked = ExtResource( 2 )
 custom_icons/unchecked = ExtResource( 3 )
 
-[node name="retention" type="CheckBox" parent="GridContainer/spoof"]
+[node name="retention" type="CheckBox" parent="flags/spoof"]
 margin_top = 28.0
 margin_right = 24.0
 margin_bottom = 52.0

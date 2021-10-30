@@ -13,7 +13,7 @@ var rng = RandomNumberGenerator.new()
 func init_blanks():		
 	for n in deck_size:
 		var blank = original_blank.instance()		
-		var parent = get_parent().get_parent().get_node("blanks/childs")
+		var parent = get_parent().get_parent().get_node("blanks/rows/cols/childs")
 		parent.add_child(blank)
 		draw_deck.append(blank)
 
@@ -34,6 +34,11 @@ func draw_from_deck():
 		
 	current_hand.append(draw_deck.pop_back())
 		
+func resize_slider():
+	var slider = get_parent().get_parent().get_node("blanks/rows/cols/slider")
+	slider.max_value = current_hand.size() - 1
+		
 func _ready():
 	init_blanks()
 	fill_hand()
+	resize_slider()
