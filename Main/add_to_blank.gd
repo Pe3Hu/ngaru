@@ -1,11 +1,12 @@
 extends Button
 
 func _on_add_to_blank_pressed():
-	var hbox = get_parent().get_parent().get_parent()
-	var player = hbox.get_node("player")
-	var vials_slider = hbox.get_node("vials/cols/slider")
-	var stencils_slider = hbox.get_node("stencils/cols/slider")
-	var blanks_slider = hbox.get_node("blanks/rows/cols/slider")
+	var player_name = get_parent().get_parent().get_parent().name
+	var preparation_hbox = get_node("/root/main/bg/rows/tabs/preparation/grid/"+player_name)
+	var player = get_node("/root/main/players/"+player_name)
+	var vials_slider = preparation_hbox.get_node("vials/cols/slider")
+	var stencils_slider = preparation_hbox.get_node("stencils/cols/slider")
+	var blanks_slider = preparation_hbox.get_node("blanks/rows/cols/slider")
 	if	(vials_slider.max_value != -1 &&
 		stencils_slider.max_value != -1 &&
 		blanks_slider.max_value != -1 ):
@@ -22,6 +23,7 @@ func _on_add_to_blank_pressed():
 		stencil.set_visible(false)
 		player.get_node("stencils").current_hand.remove(stencils_slider.value)
 		stencils_slider.max_value = player.get_node("stencils").current_hand.size() - 1
+		
 		if stencils_slider.max_value == -1:
 			stencils_slider.visible = false
 		else:	

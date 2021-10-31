@@ -9,7 +9,10 @@ var discard_deck = []
 
 var path_stencil_types = "res://stencil/stencil_types.json"
 var original_stencil = preload("res://stencil/stencil.tscn")
+var player
+var preparation_hbox
 var stencil_types = []
+
 var rng = RandomNumberGenerator.new()
 
 func save():
@@ -64,15 +67,17 @@ func load_stencil_types():
 	
 func init_stencils():	
 	load_stencil_types()
+	player = get_parent()
+	preparation_hbox = get_node("/root/main/bg/rows/tabs/preparation/grid/"+player.name)
 	
-	for n in deck_size:
+	for _i in deck_size:
 		var stencil = original_stencil.instance()		
 		rng.randomize()	
-		var _i = 0;
-		var index = floor(rng.randf_range(0, stencil_types[_i]["binary"].size()))
-		var type = stencil_types[_i]["binary"][index]
+		var _j = 0;
+		var index = floor(rng.randf_range(0, stencil_types[_j]["binary"].size()))
+		var type = stencil_types[_j]["binary"][index]
 		stencil.set_flags(type)
-		var parent = get_parent().get_parent().get_node("stencils/cols/childs")
+		var parent = preparation_hbox.get_node("stencils/cols/childs")
 		parent.add_child(stencil)
 		draw_deck.append(stencil)
 
@@ -94,7 +99,7 @@ func draw_from_deck():
 	current_hand.append(draw_deck.pop_back())
 
 func resize_slider():
-	var slider = get_parent().get_parent().get_node("stencils/cols/slider")
+	var slider = preparation_hbox.get_node("stencils/cols/slider")
 	slider.max_value = current_hand.size() - 1
 		
 func _ready():

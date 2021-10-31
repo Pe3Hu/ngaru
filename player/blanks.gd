@@ -8,12 +8,19 @@ var draw_deck = []
 var discard_deck = []
 
 var original_blank = preload("res://blank/blank.tscn")
+var player
+var preparation_hbox
+
 var rng = RandomNumberGenerator.new()
 	
 func init_blanks():		
-	for n in deck_size:
+	player = get_parent()
+	preparation_hbox = get_node("/root/main/bg/rows/tabs/preparation/grid/"+player.name)
+	
+	for _i in deck_size:
 		var blank = original_blank.instance()		
-		var parent = get_parent().get_parent().get_node("blanks/rows/cols/childs")
+		blank.index = _i
+		var parent = preparation_hbox.get_node("blanks/rows/cols/childs")
 		parent.add_child(blank)
 		draw_deck.append(blank)
 
@@ -35,7 +42,7 @@ func draw_from_deck():
 	current_hand.append(draw_deck.pop_back())
 		
 func resize_slider():
-	var slider = get_parent().get_parent().get_node("blanks/rows/cols/slider")
+	var slider = preparation_hbox.get_node("blanks/rows/cols/slider")
 	slider.max_value = current_hand.size() - 1
 		
 func _ready():

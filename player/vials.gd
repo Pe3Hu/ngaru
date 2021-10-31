@@ -9,8 +9,11 @@ var discard_deck = []
 
 var path_vial_types = "res://vial/vial_types.json"
 var original_vial = preload("res://vial/vial.tscn")
+var player
+var preparation_hbox
 var vial_types = []
 var charge
+
 var rng = RandomNumberGenerator.new()
 	
 func load_vial_types():
@@ -27,14 +30,16 @@ func load_vial_types():
 	
 func init_vials():	
 	load_vial_types()
+	player = get_parent()
+	preparation_hbox = get_node("/root/main/bg/rows/tabs/preparation/grid/"+player.name)
 	
-	for n in deck_size:
+	for _i in deck_size:
 		var vial = original_vial.instance()		
 		rng.randomize()	
 		var index = floor(rng.randf_range(0, vial_types.size()))
 		var charge = vial_types[index]
 		vial.set_charge(charge)
-		var parent = get_parent().get_parent().get_node("vials/cols/childs")
+		var parent = preparation_hbox.get_node("vials/cols/childs")
 		parent.add_child(vial)
 		draw_deck.append(vial)
 
@@ -56,7 +61,7 @@ func draw_from_deck():
 	current_hand.append(draw_deck.pop_back())
 
 func resize_slider():
-	var slider = get_parent().get_parent().get_node("vials/cols/slider")
+	var slider = preparation_hbox.get_node("vials/cols/slider")
 	slider.max_value = current_hand.size() - 1
 		
 func _ready():

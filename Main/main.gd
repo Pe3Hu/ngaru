@@ -10,8 +10,8 @@ func _ready():
 	timer.set_wait_time(1)
 	timer.start()
 	
-	left_player = get_node("main_bg/main_layout/left_player/player")
-	right_player = get_node("main_bg/main_layout/right_player/player")
+	left_player = get_node("players/left_player")
+	right_player = get_node("players/right_player")
 	print()
 
 func _process(delta):
