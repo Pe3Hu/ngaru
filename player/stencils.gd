@@ -1,7 +1,7 @@
 extends Node
 
 var hand_size = 4
-var deck_size = 8
+var deck_size = 12
 
 var current_hand = []
 var draw_deck = []
@@ -74,7 +74,7 @@ func init_stencils():
 		var stencil = original_stencil.instance()
 		rng.randomize()
 		var _j = 0;
-		var index = floor(rng.randf_range(0, stencil_types[_j]["binary"].size()))
+		var index = _i % stencil_types[_j]["binary"].size()#floor(rng.randf_range(0, stencil_types[_j]["binary"].size()))
 		var type = stencil_types[_j]["binary"][index]
 		stencil.set_flags(type)
 		var parent = preparation_hbox.get_node("stencils/cols/childs")

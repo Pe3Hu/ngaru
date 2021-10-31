@@ -5,8 +5,9 @@ var history = [ [] ]
 var current = {
 	"round": 0,
 	"action": 0,
-	"passed_player": null
-	}
+	"passed_player": null,
+	"onslaught_player": null
+}
 var last_action = {
 	"left_player": false,
 	"right_player": false
@@ -15,10 +16,9 @@ var current_action = {
 	"left_player": true,
 	"right_player": false
 }
+var impact = false
 
 func switch_action():
-	#print(last_action, current_action, current)		
-	
 	if current["passed_player"] == null:
 		for player in player_names:
 			current_action[player] = !current_action[player]	
@@ -34,7 +34,22 @@ func jot_pass(player):
 	history[current.round].append(action)
 	current.action += 1
 	switch_action()
-	last_action[player] = true;
+	last_action[player] = true
+	
+func jot_activate(player, blank):
+	var action = {
+		"player": player,
+		"what": "activate",
+		"info": {
+			"blank": blank
+		},	
+		"action": current.action
+	}
+	
+	history[current.round].append(action)
+	current.action += 1
+	switch_action()
+	last_action[player.name] = true
 
 func jot_add(player, vial, stencil, blank):	
 	var action = {
@@ -44,14 +59,13 @@ func jot_add(player, vial, stencil, blank):
 			"vial": vial,
 			"stencil": stencil,
 			"blank": blank,
-			},	
+			},
 		"action": current.action
 	}
 	
 	history[current.round].append(action)
 	current.action += 1
 	switch_action()
-	#print(history)
 
 func end_round_check():
 	var flag = true
@@ -67,9 +81,8 @@ func end_round_check():
 		
 		current.action = 0
 		current.round += 1
-		next_round()
-		var timer = get_node("/root/main/global_timer")
-		#timer.stop()
+		if !impact:
+			next_round()
 
 func next_round():
 	var players = get_node("/root/main/players")
@@ -98,11 +111,25 @@ func next_round():
 	}
 	current_action[current["passed_player"]] = true
 	current["passed_player"] = null
+	next_action()
 
 func next_action():
 	var players = get_node("/root/main/players")
+	var current_player
+	var flag = impact
+	
 	for _name in player_names:
 		if current_action[_name]:
-			var player = players.get_node(_name)
-			player.select_by_priority()
-			return
+			current_player = players.get_node(_name)
+			
+	current_player.impact_check()
+	
+	for _name in player_names:
+		flag = flag && last_action[_name]
+	
+	if flag:
+		var tabs = get_node("/root/main/bg/rows/tabs")
+		tabs.current_tab = 1
+		var timer = get_node("/root/main/global_timer")
+		timer.stop()
+	return

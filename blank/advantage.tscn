@@ -1,0 +1,112 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://blank/advantage.gd" type="Script" id=1]
+
+[node name="advantage" type="PanelContainer"]
+margin_right = 615.0
+margin_bottom = 52.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rows" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 608.0
+margin_bottom = 45.0
+
+[node name="values" type="HBoxContainer" parent="rows"]
+margin_right = 601.0
+margin_bottom = 14.0
+
+[node name="cargo" type="Label" parent="rows/values"]
+margin_right = 117.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 0.25098, 0.45098, 1 )
+text = "0"
+align = 1
+
+[node name="recce" type="Label" parent="rows/values"]
+margin_left = 121.0
+margin_right = 238.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 0.94902, 0.25098, 1 )
+text = "0"
+align = 1
+
+[node name="feint" type="Label" parent="rows/values"]
+margin_left = 242.0
+margin_right = 359.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.25098, 1, 0.34902, 1 )
+text = "0"
+align = 1
+
+[node name="depth" type="Label" parent="rows/values"]
+margin_left = 363.0
+margin_right = 480.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.25098, 0.74902, 1, 1 )
+text = "0"
+align = 1
+
+[node name="spoof" type="Label" parent="rows/values"]
+margin_left = 484.0
+margin_right = 601.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.65098, 0.25098, 1, 1 )
+text = "0"
+align = 1
+
+[node name="options" type="HBoxContainer" parent="rows"]
+margin_top = 18.0
+margin_right = 601.0
+margin_bottom = 38.0
+
+[node name="cargo" type="OptionButton" parent="rows/options"]
+margin_right = 117.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 0.25098, 0.45098, 1 )
+text = "cargo_options"
+
+[node name="recce" type="OptionButton" parent="rows/options"]
+margin_left = 121.0
+margin_right = 239.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 0.94902, 0.25098, 1 )
+text = "recce_options"
+
+[node name="feint" type="OptionButton" parent="rows/options"]
+margin_left = 243.0
+margin_right = 355.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.25098, 1, 0.34902, 1 )
+text = "feint_options"
+
+[node name="depth" type="OptionButton" parent="rows/options"]
+margin_left = 359.0
+margin_right = 479.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.25098, 0.74902, 1, 1 )
+text = "depth_options"
+
+[node name="spoof" type="OptionButton" parent="rows/options"]
+margin_left = 483.0
+margin_right = 601.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.65098, 0.25098, 1, 1 )
+text = "spoof_options"
+
+[connection signal="item_selected" from="rows/options/cargo" to="." method="_on_cargo_item_selected"]

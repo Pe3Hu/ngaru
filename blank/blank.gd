@@ -1,111 +1,70 @@
 extends PanelContainer
 
 var index
-var charge = {
-	"cargo":
-		{
-		"onslaught": 0, 
-		"retention": 0
-		},
-	"recce":
-		{
-		"onslaught": 0, 
-		"retention": 0
-		},
-	"feint":
-		{
-		"onslaught": 0, 
-		"retention": 0
-		},
-	"depth":
-		{
-		"onslaught": 0, 
-		"retention": 0
-		},
-	"spoof":
-		{
-		"onslaught": 0, 
-		"retention": 0
-		}
-	}
+var charge
 var priorities
 var first_keys = ["cargo","recce","feint","depth","spoof"]
 var second_keys = ["onslaught","retention"]
+var archetype
 
 var rng = RandomNumberGenerator.new()
 
 func _ready():
+	clean()
 	var priorities_name
 	
 	match index:
 		0:
-			priorities_name = "onslaught"
+			archetype = "onslaught"
+			priorities_name = "_"+archetype
 		1:
-			priorities_name = "retention"
+			archetype = "retention"
+			priorities_name = "_"+archetype
 		2:
-			rng.randomize()	
+			archetype = "buff"
+			rng.randomize()
 			var _index = floor(rng.randf_range(0, first_keys.size()))
-			priorities_name = first_keys[_index]
+			priorities_name = "_"+first_keys[_index]
 			
 	set_priorities(priorities_name)	
 
 func set_priorities(_priorities):
 	var default_value = 0
 	
-	priorities = {
-		"cargo":
-			{
-			"onslaught": default_value, 
-			"retention": default_value
-			},
-		"recce":
-			{
-			"onslaught": default_value, 
-			"retention": default_value
-			},
-		"feint":
-			{
-			"onslaught": default_value, 
-			"retention": default_value
-			},
-		"depth":
-			{
-			"onslaught": default_value, 
-			"retention": default_value
-			},
-		"spoof":
-			{
-			"onslaught": default_value, 
-			"retention": default_value
-			},
-		}
+	priorities = {}
 	
+	for _f_key in first_keys:
+		priorities[_f_key] = {}
+		
+		for _s_key in second_keys:
+			priorities[_f_key][_s_key] = default_value
+		
 	match _priorities:
-		"onslaught":		
-			priorities["cargo"]["onslaught"] = 40	
+		"_onslaught":		
+			priorities["cargo"]["onslaught"] = 10	
 			priorities["recce"]["onslaught"] = 7	
 			priorities["feint"]["onslaught"] = 8	
 			priorities["depth"]["onslaught"] = 9	
 			priorities["spoof"]["onslaught"] = 6	
-		"retention":		
-			priorities["cargo"]["retention"] = 40	
+		"_retention":		
+			priorities["cargo"]["retention"] = 10	
 			priorities["recce"]["retention"] = 7	
 			priorities["feint"]["retention"] = 8	
 			priorities["depth"]["retention"] = 9	
 			priorities["spoof"]["retention"] = 6	
-		"cargo":		
+		"_cargo":		
 			priorities["cargo"]["onslaught"] = 10	
 			priorities["cargo"]["retention"] = 10	
-		"recce":		
+		"_recce":		
 			priorities["recce"]["onslaught"] = 10	
 			priorities["recce"]["retention"] = 10	
-		"feint":		
+		"_feint":		
 			priorities["feint"]["onslaught"] = 10	
 			priorities["feint"]["retention"] = 10	
-		"depth":		
+		"_depth":		
 			priorities["depth"]["onslaught"] = 10	
 			priorities["depth"]["retention"] = 10	
-		"spoof":		
+		"_spoof":		
 			priorities["spoof"]["onslaught"] = 10	
 			priorities["spoof"]["retention"] = 10	
 
@@ -116,4 +75,14 @@ func add_to_charge(vial, stencil):
 				var first_key = stencil.first_keys[_j]
 				var second_key = stencil.second_keys[_i]				
 				charge[first_key][second_key] += vial.charge[first_key][second_key]
-				get_node("charge/"+first_key+"/"+second_key).text = String(charge[first_key][second_key])		
+				get_node("charge/"+first_key+"/"+second_key).text = str(charge[first_key][second_key])		
+
+func clean():
+	charge = {}
+	
+	for _f_key in first_keys:
+		charge[_f_key] = {}
+		
+		for _s_key in second_keys:
+			charge[_f_key][_s_key] = 0
+			get_node("charge/"+_f_key+"/"+_s_key).text = str(charge[_f_key][_s_key])

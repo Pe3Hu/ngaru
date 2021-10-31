@@ -30,10 +30,17 @@ func fill():
 						if stencil.flags[_i][_j] == "1":
 							var first_key = stencil.first_keys[_j]
 							var second_key = stencil.second_keys[_i]
-							if charge.keys().find(first_key) == -1:
-								charge[first_key] = {}
-							charge[first_key][second_key] = vial.charge[first_key][second_key]
-										
+							
+							
+								
+							var tendency_scale = get_parent().tendency[first_key] * get_parent().tendency[second_key]
+							var blank_priorities = blank.priorities[first_key][second_key]
+							var value = vial.charge[first_key][second_key] * tendency_scale * blank_priorities
+							if value > 0:
+								if charge.keys().find(first_key) == -1:
+									charge[first_key] = {}
+								charge[first_key][second_key] = value
+									
 				all_combos[blank][vial][stencil] = charge
 	
 	return sort_by_priority()		
@@ -41,7 +48,7 @@ func fill():
 func sort_by_priority():
 	var priority_values = []
 	
-	for blank in all_combos.keys():
+	for blank in all_combos.keys():		
 		for vial in all_combos[blank].keys():
 			for stencil in all_combos[blank][vial].keys():
 				var combo = all_combos[blank][vial][stencil]
@@ -49,7 +56,7 @@ func sort_by_priority():
 				
 				for _f_key in combo.keys():
 					for _s_key in combo[_f_key].keys():
-						value += pow( combo[_f_key ][_s_key], 2 ) * blank.priorities[_f_key][_s_key]					
+						value += combo[_f_key ][_s_key]
 				
 				if value > 0:
 					var obj = {
@@ -61,7 +68,12 @@ func sort_by_priority():
 							
 					priority_values.append( obj )
 	
-	priority_values.sort_custom(MyCustomSorter, "sort_ascending")	
+	priority_values.sort_custom(MyCustomSorter, "sort_ascending")
+	
+	#var top = 1	
+	#while priority_values.size() > top:
+	#	priority_values.pop_front()
+		
 	var result = get_random_by_values(priority_values)
 	return result
 	

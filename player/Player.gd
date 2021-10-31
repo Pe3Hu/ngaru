@@ -13,7 +13,16 @@ var current = {
 }
 var sins = {
 	"pride": 1,
-	"greed": 0
+	"greed": 1
+}
+var tendency = {
+	"cargo": 4, 
+	"recce": 1,
+	"feint": 1,
+	"depth": 1,
+	"spoof": 1,		
+	"onslaught": 1,
+	"retention" : 1
 }
 var confines = {
 	"pride": [
@@ -40,10 +49,20 @@ var confines = {
 	],	
 	"greed": [ 0.55, 0.7, 0.85, 1, 1.15 ]
 }
+var impact_criteria = {
+	"onslaught": {
+		"cargo": 9
+	}
+	#,"retention"
+}
 var assessment = null
 var label
-var add_button
-var pass_button
+var buttons = {
+	"add": null,
+	"pass": null,
+	"activate": null
+}
+var orders
 
 var rng = RandomNumberGenerator.new()
 
@@ -61,16 +80,15 @@ func select_by_priority():
 		var result = combos.fill()
 		
 		if result == null:
-			pass_button._on_pass_turn_pressed()
+			buttons["pass"]._on_pass_turn_pressed()
 			return
-			
-		make_assessment(result)
 		
 		vials_slider.value = vials.find(result["vial"])
 		stencils_slider.value = stencils.find(result["stencil"])
 		blanks_slider.value = blanks.find(result["blank"])
+		make_assessment(result)
 	else:
-		pass_button._on_pass_turn_pressed()
+		buttons["pass"]._on_pass_turn_pressed()
 
 func make_assessment(result):
 	var mark = round(result.value / result.max_value * 100)
@@ -86,10 +104,10 @@ func make_assessment(result):
 		var rnd = rng.randf_range(0,1)
 		#greed check
 		if rnd <= _min:
-			add_button._on_add_to_blank_pressed()
+			buttons["add"]._on_add_to_blank_pressed()
 		else:
-			pass_button._on_pass_turn_pressed()
-		
+			buttons["pass"]._on_pass_turn_pressed()
+
 func prepare_new_round():
 	var vials = get_node("vials")
 	var stencils = get_node("stencils")
@@ -103,7 +121,58 @@ func prepare_new_round():
 	current["stamina_price"] = 1
 	stamina["current"] += stamina["inc"]
 
+func find_blank_for_activate(second_key):
+	var result = {
+		"index": -1,
+		"value": -1,
+		"blank": null
+	}
+	var first_key = "cargo"
+	
+	var preparation_hbox = get_node("/root/main/bg/rows/tabs/preparation/grid/"+self.name)
+	var blanks_slider = preparation_hbox.get_node("blanks/rows/cols/slider")
+	var blanks = get_node("blanks").current_hand
+	
+	for _i in blanks.size():
+		if result["value"] < blanks[_i].charge[first_key][second_key] && blanks[_i].archetype == second_key:
+			result = {
+				"index": _i,
+				"value": blanks[_i].charge[first_key][second_key],
+				"blank": blanks[_i]
+			}
+	
+	return result
+
+func impact_check():
+	var flag = false
+	var first_key
+	
+	if orders.impact:
+		first_key = "retention"
+		flag = true
+	else:
+		first_key = "onslaught"
+		var result = find_blank_for_activate(first_key)
+		
+		if result["value"] > impact_criteria[first_key]["cargo"]:
+			flag = true
+	
+	if flag:
+		reaction_to_impact(first_key)
+	else:
+		select_by_priority()
+
+func reaction_to_impact(first_key):	
+	var result = find_blank_for_activate(first_key)
+	
+	var blanks_slider = get_node("/root/main/bg/rows/tabs/preparation/grid/"+self.name+"/blanks/rows/cols/slider")
+	blanks_slider.value = result.index
+	buttons["activate"]._on_activate_blank_pressed()
+
 func _ready():
+	orders = get_node("/root/main/order_of_moves")
 	var rows = get_node("/root/main/bg/rows/tabs/preparation/grid/"+self.name+"/blanks/rows")
-	add_button = rows.get_node("add_to_blank")
-	pass_button = rows.get_node("pass_turn")
+	buttons["add"] = rows.get_node("add_to_blank")
+	buttons["pass"] = rows.get_node("pass_turn")
+	buttons["activate"] = rows.get_node("activate_blank")
+	
