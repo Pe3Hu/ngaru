@@ -1,22 +1,16 @@
 extends Control
 
-var left_player
-var right_player
+var order_of_moves
 var timer
 var time_stop = false
 
 func _ready():
 	timer =  get_node("global_timer")
-	timer.set_wait_time(1)
+	timer.set_wait_time(0.1)
 	timer.start()
 	
-	left_player = get_node("players/left_player")
-	right_player = get_node("players/right_player")
-	print()
-
-func _process(delta):
-	pass
+	order_of_moves = get_node("order_of_moves")
 
 func _on_global_timer_timeout():
-	left_player.select_by_priority()
-	timer.stop()
+	order_of_moves.next_action()
+	#timer.stop()

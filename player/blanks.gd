@@ -1,7 +1,7 @@
 extends Node
 
-var hand_size = 3
-var deck_size = 3
+var hand_size = 2
+var deck_size = 2
 
 var current_hand = []
 var draw_deck = []
@@ -29,7 +29,6 @@ func fill_hand():
 		draw_from_deck()
 	
 	for blank in current_hand:		
-		var index = current_hand.find(blank,0)
 		blank.set_visible(true) 
 
 func draw_from_deck():

@@ -6,8 +6,9 @@ var txt
 
 func _ready():
 	player = get_node("/root/main/players/"+self.name)
+	player.label = self
 	update_info()
 
 func update_info():
-	txt = "energy: " + String(player.energy.current) + "/" + String(player.energy.max)
+	txt = "stamina: " + String(player.stamina.current) + "/" + String(player.stamina.max)
 	self.text = txt

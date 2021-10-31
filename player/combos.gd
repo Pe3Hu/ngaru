@@ -10,7 +10,7 @@ var priorities
 
 var rng = RandomNumberGenerator.new()
 
-func fill():	
+func fill():
 	vials_hand = get_parent().get_node("vials").current_hand
 	stencils_hand = get_parent().get_node("stencils").current_hand
 	blanks_hand = get_parent().get_node("blanks").current_hand
@@ -62,7 +62,7 @@ func sort_by_priority():
 					priority_values.append( obj )
 	
 	priority_values.sort_custom(MyCustomSorter, "sort_ascending")	
-	var result = get_random_by_values(priority_values)			
+	var result = get_random_by_values(priority_values)
 	return result
 	
 class MyCustomSorter:
@@ -72,11 +72,18 @@ class MyCustomSorter:
 		return false			
 
 func get_random_by_values(arr):
+	if arr.size() == 0:
+		return null
+		
 	var indexs = []
+	var _max = 0
 	
 	for _i in arr.size():
 		for _j in arr[_i]["value"]:
 			indexs.append(_i)
+		
+		if arr[_i]["value"] > _max:
+			_max = arr[_i]["value"]
 	
 	rng.randomize()	
 	
@@ -92,5 +99,6 @@ func get_random_by_values(arr):
 		result = arr[index]
 	else:	
 		result = arr[indexs[index]]
-		
+	
+	result["max_value"] = _max
 	return result

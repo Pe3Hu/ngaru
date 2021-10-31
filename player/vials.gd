@@ -12,7 +12,6 @@ var original_vial = preload("res://vial/vial.tscn")
 var player
 var preparation_hbox
 var vial_types = []
-var charge
 
 var rng = RandomNumberGenerator.new()
 	
@@ -48,7 +47,6 @@ func fill_hand():
 		draw_from_deck()
 	
 	for vial in current_hand:		
-		var index = current_hand.find(vial,0)
 		vial.set_visible(true) 
 
 func draw_from_deck():
@@ -59,6 +57,14 @@ func draw_from_deck():
 		discard_deck = []
 		
 	current_hand.append(draw_deck.pop_back())
+
+
+func discard_hand():	
+	for vial in current_hand:		
+		vial.set_visible(false) 
+		
+	while current_hand.size() > 0:
+		discard_deck.append(current_hand.pop_back())
 
 func resize_slider():
 	var slider = preparation_hbox.get_node("vials/cols/slider")

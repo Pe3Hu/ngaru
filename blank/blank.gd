@@ -44,8 +44,8 @@ func _ready():
 			priorities_name = "retention"
 		2:
 			rng.randomize()	
-			var index = floor(rng.randf_range(0, first_keys.size()))
-			priorities_name = first_keys[index]
+			var _index = floor(rng.randf_range(0, first_keys.size()))
+			priorities_name = first_keys[_index]
 			
 	set_priorities(priorities_name)	
 
@@ -82,13 +82,13 @@ func set_priorities(_priorities):
 	
 	match _priorities:
 		"onslaught":		
-			priorities["cargo"]["onslaught"] = 10	
+			priorities["cargo"]["onslaught"] = 40	
 			priorities["recce"]["onslaught"] = 7	
 			priorities["feint"]["onslaught"] = 8	
 			priorities["depth"]["onslaught"] = 9	
 			priorities["spoof"]["onslaught"] = 6	
 		"retention":		
-			priorities["cargo"]["retention"] = 10	
+			priorities["cargo"]["retention"] = 40	
 			priorities["recce"]["retention"] = 7	
 			priorities["feint"]["retention"] = 8	
 			priorities["depth"]["retention"] = 9	

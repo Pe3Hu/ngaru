@@ -63,7 +63,7 @@ func load_stencil_types():
 	
 	while open_file.get_position() < open_file.get_len():
 		var data: Dictionary = parse_json(open_file.get_line())
-		stencil_types.push_back(data)	
+		stencil_types.push_back(data)
 	
 func init_stencils():	
 	load_stencil_types()
@@ -71,8 +71,8 @@ func init_stencils():
 	preparation_hbox = get_node("/root/main/bg/rows/tabs/preparation/grid/"+player.name)
 	
 	for _i in deck_size:
-		var stencil = original_stencil.instance()		
-		rng.randomize()	
+		var stencil = original_stencil.instance()
+		rng.randomize()
 		var _j = 0;
 		var index = floor(rng.randf_range(0, stencil_types[_j]["binary"].size()))
 		var type = stencil_types[_j]["binary"][index]
@@ -86,7 +86,6 @@ func fill_hand():
 		draw_from_deck()
 	
 	for stencil in current_hand:		
-		var index = current_hand.find(stencil,0)
 		stencil.set_visible(true) 
 
 func draw_from_deck():
@@ -101,6 +100,13 @@ func draw_from_deck():
 func resize_slider():
 	var slider = preparation_hbox.get_node("stencils/cols/slider")
 	slider.max_value = current_hand.size() - 1
+
+func discard_hand():	
+	for stencil in current_hand:		
+		stencil.set_visible(false) 
+		
+	while current_hand.size() > 0:
+		discard_deck.append(current_hand.pop_back())
 		
 func _ready():
 	init_stencils()
