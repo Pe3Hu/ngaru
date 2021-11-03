@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main/main.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Main/pause.gd" type="Script" id=7]
 [ext_resource path="res://Main/activate_blank.gd" type="Script" id=8]
 [ext_resource path="res://blank/advantage.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Main/impact_of_impacts.gd" type="Script" id=10]
 
 [sub_resource type="Theme" id=1]
 
@@ -87,6 +88,7 @@ __meta__ = {
 }
 
 [node name="preparation" type="Tabs" parent="bg/rows/tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -331,7 +333,6 @@ margin_bottom = 16.0
 theme = SubResource( 1 )
 
 [node name="impact" type="Tabs" parent="bg/rows/tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -353,18 +354,138 @@ __meta__ = {
 }
 
 [node name="onslaught" parent="bg/rows/tabs/impact/players" instance=ExtResource( 9 )]
-margin_right = 629.0
 margin_bottom = 436.0
 size_flags_horizontal = 3
+
+[node name="breakaways" type="PanelContainer" parent="bg/rows/tabs/impact/players"]
+margin_left = 619.0
+margin_right = 667.0
+margin_bottom = 436.0
+size_flags_horizontal = 0
+
+[node name="grid" type="GridContainer" parent="bg/rows/tabs/impact/players/breakaways"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 41.0
+margin_bottom = 429.0
+
+[node name="cargo" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
+margin_right = 34.0
+margin_bottom = 14.0
+
+[node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/cargo"]
+margin_right = 34.0
+margin_bottom = 14.0
+
+[node name="onslaught" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/cargo/cols"]
+margin_right = 15.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 15, 0 )
+custom_colors/font_color = Color( 1, 0.25098, 0.45098, 1 )
+
+[node name="retention" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/cargo/cols"]
+margin_left = 19.0
+margin_right = 34.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 15, 0 )
+custom_colors/font_color = Color( 1, 0.25098, 0.45098, 1 )
+align = 2
+
+[node name="recce" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
+margin_top = 18.0
+margin_right = 34.0
+margin_bottom = 32.0
+
+[node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/recce"]
+margin_right = 34.0
+margin_bottom = 14.0
+
+[node name="onslaught" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/recce/cols"]
+margin_right = 8.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 0.94902, 0.25098, 1 )
+text = "1"
+
+[node name="retention" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/recce/cols"]
+margin_left = 12.0
+margin_right = 20.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 0.94902, 0.25098, 1 )
+text = "1"
+align = 2
+
+[node name="feint" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
+margin_top = 36.0
+margin_right = 34.0
+margin_bottom = 50.0
+
+[node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/feint"]
+margin_right = 34.0
+margin_bottom = 14.0
+
+[node name="onslaught" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/feint/cols"]
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.25098, 1, 0.34902, 1 )
+
+[node name="retention" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/feint/cols"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.25098, 1, 0.34902, 1 )
+align = 2
+
+[node name="depth" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
+margin_top = 54.0
+margin_right = 34.0
+margin_bottom = 68.0
+
+[node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/depth"]
+margin_right = 34.0
+margin_bottom = 14.0
+
+[node name="onslaught" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/depth/cols"]
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.25098, 0.74902, 1, 1 )
+
+[node name="retention" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/depth/cols"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.25098, 0.74902, 1, 1 )
+align = 2
+
+[node name="spoof" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
+margin_top = 72.0
+margin_right = 34.0
+margin_bottom = 86.0
+
+[node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/spoof"]
+margin_right = 34.0
+margin_bottom = 14.0
+
+[node name="onslaught" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/spoof/cols"]
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.65098, 0.25098, 1, 1 )
+
+[node name="retention" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/spoof/cols"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.65098, 0.25098, 1, 1 )
+align = 2
 
 [node name="retention" parent="bg/rows/tabs/impact/players" instance=ExtResource( 9 )]
-margin_left = 633.0
-margin_right = 1263.0
+margin_left = 671.0
+margin_right = 1286.0
 margin_bottom = 436.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="order_of_moves" type="Node" parent="."]
+[node name="order_of_orders" type="Node" parent="."]
 script = ExtResource( 5 )
+
+[node name="impact_of_impacts" type="Node" parent="."]
+script = ExtResource( 10 )
 
 [connection signal="timeout" from="global_timer" to="." method="_on_global_timer_timeout"]
 [connection signal="pressed" from="bg/rows/tabs/preparation/grid/left_player/blanks/rows/pass_turn" to="bg/rows/tabs/preparation/grid/left_player/blanks/rows/pass_turn" method="_on_pass_turn_pressed"]

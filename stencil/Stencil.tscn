@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://stencil/stencil.gd" type="Script" id=1]
-[ext_resource path="res://assets/spoof_box.png" type="Texture" id=2]
-[ext_resource path="res://assets/empty_box.png" type="Texture" id=3]
-[ext_resource path="res://assets/feint_box.png" type="Texture" id=4]
-[ext_resource path="res://assets/depth_box.png" type="Texture" id=5]
-[ext_resource path="res://assets/cargo_box.png" type="Texture" id=6]
-[ext_resource path="res://assets/recce_box.png" type="Texture" id=7]
+[ext_resource path="res://assets/stencils/spoof_box.png" type="Texture" id=2]
+[ext_resource path="res://assets/stencils/empty_box.png" type="Texture" id=3]
+[ext_resource path="res://assets/stencils/feint_box.png" type="Texture" id=4]
+[ext_resource path="res://assets/stencils/depth_box.png" type="Texture" id=5]
+[ext_resource path="res://assets/stencils/cargo_box.png" type="Texture" id=6]
+[ext_resource path="res://assets/stencils/recce_box.png" type="Texture" id=7]
 
 [node name="stencil" type="PanelContainer"]
 visible = false

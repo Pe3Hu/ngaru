@@ -51,7 +51,7 @@ var confines = {
 }
 var impact_criteria = {
 	"onslaught": {
-		"cargo": 9
+		"cargo": 4
 	}
 	#,"retention"
 }
@@ -62,7 +62,7 @@ var buttons = {
 	"pass": null,
 	"activate": null
 }
-var orders
+var order
 
 var rng = RandomNumberGenerator.new()
 
@@ -147,7 +147,7 @@ func impact_check():
 	var flag = false
 	var first_key
 	
-	if orders.impact:
+	if order.impact_flag:
 		first_key = "retention"
 		flag = true
 	else:
@@ -170,9 +170,8 @@ func reaction_to_impact(first_key):
 	buttons["activate"]._on_activate_blank_pressed()
 
 func _ready():
-	orders = get_node("/root/main/order_of_moves")
+	order = get_node("/root/main/order_of_orders")
 	var rows = get_node("/root/main/bg/rows/tabs/preparation/grid/"+self.name+"/blanks/rows")
 	buttons["add"] = rows.get_node("add_to_blank")
 	buttons["pass"] = rows.get_node("pass_turn")
 	buttons["activate"] = rows.get_node("activate_blank")
-	

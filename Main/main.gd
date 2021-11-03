@@ -1,6 +1,6 @@
 extends Control
 
-var order_of_moves
+var order
 var timer
 var time_stop = false
 
@@ -9,8 +9,8 @@ func _ready():
 	timer.set_wait_time(0.1)
 	timer.start()
 	
-	order_of_moves = get_node("order_of_moves")
+	order = get_node("order_of_orders")
 
 func _on_global_timer_timeout():
-	order_of_moves.next_action()
+	order.next_action()
 	#timer.stop()

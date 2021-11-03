@@ -2,7 +2,7 @@ extends Button
 
 
 func _on_activate_blank_pressed():	
-	var order = get_node("/root/main/order_of_moves")
+	var order = get_node("/root/main/order_of_orders")
 	var player_name = get_parent().get_parent().get_parent().name
 	
 	if order.current_action[player_name]:
@@ -23,4 +23,4 @@ func _on_activate_blank_pressed():
 		get_parent().get_node("pass_turn").disabled = true
 		get_parent().get_node("add_to_blank").visible = false
 		visible = false
-		order.impact = true
+		order.impact_flag = true

@@ -16,7 +16,7 @@ var current_action = {
 	"left_player": true,
 	"right_player": false
 }
-var impact = false
+var impact_flag = false
 
 func switch_action():
 	if current["passed_player"] == null:
@@ -81,7 +81,7 @@ func end_round_check():
 		
 		current.action = 0
 		current.round += 1
-		if !impact:
+		if !impact_flag:
 			next_round()
 
 func next_round():
@@ -116,7 +116,7 @@ func next_round():
 func next_action():
 	var players = get_node("/root/main/players")
 	var current_player
-	var flag = impact
+	var flag = impact_flag
 	
 	for _name in player_names:
 		if current_action[_name]:
@@ -130,6 +130,8 @@ func next_action():
 	if flag:
 		var tabs = get_node("/root/main/bg/rows/tabs")
 		tabs.current_tab = 1
+		var impact = get_node("/root/main/impact_of_impacts")
+		impact.compute_breakaways()
 		var timer = get_node("/root/main/global_timer")
 		timer.stop()
 	return

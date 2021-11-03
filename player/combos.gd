@@ -48,7 +48,7 @@ func fill():
 func sort_by_priority():
 	var priority_values = []
 	
-	for blank in all_combos.keys():		
+	for blank in all_combos.keys():
 		for vial in all_combos[blank].keys():
 			for stencil in all_combos[blank][vial].keys():
 				var combo = all_combos[blank][vial][stencil]
