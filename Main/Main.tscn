@@ -88,7 +88,6 @@ __meta__ = {
 }
 
 [node name="preparation" type="Tabs" parent="bg/rows/tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -333,6 +332,7 @@ margin_bottom = 16.0
 theme = SubResource( 1 )
 
 [node name="impact" type="Tabs" parent="bg/rows/tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -354,12 +354,13 @@ __meta__ = {
 }
 
 [node name="onslaught" parent="bg/rows/tabs/impact/players" instance=ExtResource( 9 )]
+margin_right = 603.0
 margin_bottom = 436.0
 size_flags_horizontal = 3
 
 [node name="breakaways" type="PanelContainer" parent="bg/rows/tabs/impact/players"]
-margin_left = 619.0
-margin_right = 667.0
+margin_left = 607.0
+margin_right = 655.0
 margin_bottom = 436.0
 size_flags_horizontal = 0
 
@@ -391,33 +392,10 @@ rect_min_size = Vector2( 15, 0 )
 custom_colors/font_color = Color( 1, 0.25098, 0.45098, 1 )
 align = 2
 
-[node name="recce" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
+[node name="feint" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
 margin_top = 18.0
 margin_right = 34.0
 margin_bottom = 32.0
-
-[node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/recce"]
-margin_right = 34.0
-margin_bottom = 14.0
-
-[node name="onslaught" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/recce/cols"]
-margin_right = 8.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 1, 0.94902, 0.25098, 1 )
-text = "1"
-
-[node name="retention" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/recce/cols"]
-margin_left = 12.0
-margin_right = 20.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 1, 0.94902, 0.25098, 1 )
-text = "1"
-align = 2
-
-[node name="feint" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
-margin_top = 36.0
-margin_right = 34.0
-margin_bottom = 50.0
 
 [node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/feint"]
 margin_right = 34.0
@@ -435,9 +413,9 @@ custom_colors/font_color = Color( 0.25098, 1, 0.34902, 1 )
 align = 2
 
 [node name="depth" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
-margin_top = 54.0
+margin_top = 36.0
 margin_right = 34.0
-margin_bottom = 68.0
+margin_bottom = 50.0
 
 [node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/depth"]
 margin_right = 34.0
@@ -454,20 +432,40 @@ margin_bottom = 14.0
 custom_colors/font_color = Color( 0.25098, 0.74902, 1, 1 )
 align = 2
 
-[node name="spoof" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
+[node name="onslaught_secret" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
+margin_top = 54.0
+margin_right = 34.0
+margin_bottom = 68.0
+
+[node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/onslaught_secret"]
+margin_right = 34.0
+margin_bottom = 14.0
+
+[node name="onslaught" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/onslaught_secret/cols"]
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.65098, 0.25098, 1, 1 )
+
+[node name="retention" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/onslaught_secret/cols"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 0.94902, 0.25098, 1 )
+align = 2
+
+[node name="retention_secret" type="VBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid"]
 margin_top = 72.0
 margin_right = 34.0
 margin_bottom = 86.0
 
-[node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/spoof"]
+[node name="cols" type="HBoxContainer" parent="bg/rows/tabs/impact/players/breakaways/grid/retention_secret"]
 margin_right = 34.0
 margin_bottom = 14.0
 
-[node name="onslaught" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/spoof/cols"]
+[node name="onslaught" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/retention_secret/cols"]
 margin_bottom = 14.0
-custom_colors/font_color = Color( 0.65098, 0.25098, 1, 1 )
+custom_colors/font_color = Color( 1, 0.94902, 0.25098, 1 )
 
-[node name="retention" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/spoof/cols"]
+[node name="retention" type="Label" parent="bg/rows/tabs/impact/players/breakaways/grid/retention_secret/cols"]
 margin_left = 4.0
 margin_right = 4.0
 margin_bottom = 14.0
@@ -475,8 +473,8 @@ custom_colors/font_color = Color( 0.65098, 0.25098, 1, 1 )
 align = 2
 
 [node name="retention" parent="bg/rows/tabs/impact/players" instance=ExtResource( 9 )]
-margin_left = 671.0
-margin_right = 1286.0
+margin_left = 659.0
+margin_right = 1263.0
 margin_bottom = 436.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

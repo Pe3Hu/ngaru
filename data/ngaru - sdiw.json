@@ -1,0 +1,44 @@
+{
+  "capacity": {
+    "S": "vitality",
+    "D": "plasticity",
+    "I": "erudition",
+    "W": "mood"
+  },
+  "resistance": {
+    "S": "fastness",
+    "D": "elasticity",
+    "I": "integrity",
+    "W": "sangfroid"
+  },
+  "tension": {
+    "S": "overheat",
+    "D": "immediacy",
+    "I": "invention",
+    "W": "fervor"
+  },
+  "replenishment": {
+    "S": "regeneration",
+    "D": "massage",
+    "I": "meditation",
+    "W": "mantra"
+  },
+  "inside": {
+    "S": "diversion",
+    "D": "postiche",
+    "I": "disinformation",
+    "W": "bluff"
+  },
+  "outside": {
+    "S": "savvy",
+    "D": "advertence",
+    "I": "observancy",
+    "W": "prophecy"
+  },
+  "reaction": {
+    "S": "instinct",
+    "D": "reflex",
+    "I": "prescience",
+    "W": "intuition"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "slip": {
+    "S": 0,
+    "D": 7,
+    "I": 0,
+    "W": 3,
+    "ism": null,
+    "price": -1,
+    "grade": 1
+  },
+  "parry": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": null,
+    "price": -1,
+    "grade": 1
+  },
+  "block": {
+    "S": 7,
+    "D": 0,
+    "I": 3,
+    "W": 0,
+    "ism": null,
+    "price": -1,
+    "grade": 1
+  },
+  "barrier": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": null,
+    "price": -1,
+    "grade": 1
+  },
+  "blink": {
+    "S": 0,
+    "D": 3,
+    "I": 7,
+    "W": 0,
+    "ism": null,
+    "price": -1,
+    "grade": 1
+  },
+  "capture": {
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "W": 7,
+    "ism": null,
+    "price": -1,
+    "grade": 1
+  }
+}

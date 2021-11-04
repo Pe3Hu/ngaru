@@ -20,7 +20,7 @@ var tendency = {
 	"recce": 1,
 	"feint": 1,
 	"depth": 1,
-	"spoof": 1,		
+	"spoof": 1,
 	"onslaught": 1,
 	"retention" : 1
 }
@@ -63,6 +63,7 @@ var buttons = {
 	"activate": null
 }
 var order
+var sdiw
 
 var rng = RandomNumberGenerator.new()
 
@@ -175,3 +176,4 @@ func _ready():
 	buttons["add"] = rows.get_node("add_to_blank")
 	buttons["pass"] = rows.get_node("pass_turn")
 	buttons["activate"] = rows.get_node("activate_blank")
+	

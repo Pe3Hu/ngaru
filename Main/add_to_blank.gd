@@ -1,5 +1,6 @@
 extends Button
 
+
 func _on_add_to_blank_pressed():
 	var order = get_node("/root/main/order_of_orders")
 	var player_name = get_parent().get_parent().get_parent().name

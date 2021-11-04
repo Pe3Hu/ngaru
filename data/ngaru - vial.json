@@ -1,0 +1,62 @@
+{
+  "cargo+": {
+    "cargo_onslaught": 4,
+    "cargo_retention": 4,
+    "recce_onslaught": 1,
+    "recce_retention": 1,
+    "feint_onslaught": 1,
+    "feint_retention": 1,
+    "depth_onslaught": 1,
+    "depth_retention": 1,
+    "spoof_onslaught": 1,
+    "spoof_retention": 1
+  },
+  "recce+": {
+    "cargo_onslaught": 1,
+    "cargo_retention": 1,
+    "recce_onslaught": 4,
+    "recce_retention": 4,
+    "feint_onslaught": 1,
+    "feint_retention": 1,
+    "depth_onslaught": 1,
+    "depth_retention": 1,
+    "spoof_onslaught": 1,
+    "spoof_retention": 1
+  },
+  "feint+": {
+    "cargo_onslaught": 1,
+    "cargo_retention": 1,
+    "recce_onslaught": 1,
+    "recce_retention": 1,
+    "feint_onslaught": 4,
+    "feint_retention": 4,
+    "depth_onslaught": 1,
+    "depth_retention": 1,
+    "spoof_onslaught": 1,
+    "spoof_retention": 1
+  },
+  "depth+": {
+    "cargo_onslaught": 1,
+    "cargo_retention": 1,
+    "recce_onslaught": 1,
+    "recce_retention": 1,
+    "feint_onslaught": 1,
+    "feint_retention": 1,
+    "depth_onslaught": 4,
+    "depth_retention": 4,
+    "spoof_onslaught": 1,
+    "spoof_retention": 1
+  },
+  "spoof+": {
+    "cargo_onslaught": 1,
+    "cargo_retention": 1,
+    "recce_onslaught": 1,
+    "recce_retention": 1,
+    "feint_onslaught": 1,
+    "feint_retention": 1,
+    "depth_onslaught": 1,
+    "depth_retention": 1,
+    "spoof_onslaught": 4,
+    "spoof_retention": 4
+  }
+}

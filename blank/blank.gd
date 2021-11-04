@@ -1,5 +1,6 @@
 extends PanelContainer
 
+
 var index
 var charge
 var priorities

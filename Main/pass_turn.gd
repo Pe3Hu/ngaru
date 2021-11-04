@@ -1,5 +1,6 @@
 extends CheckButton
 
+
 func _on_pass_turn_pressed():
 	var order = get_node("/root/main/order_of_orders")
 	var player_name = get_parent().get_parent().get_parent().name

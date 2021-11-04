@@ -1,0 +1,56 @@
+{
+  "easy_sd": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": "sd",
+    "price": 1,
+    "grade": 1
+  },
+  "medium_sd": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": "sd",
+    "price": 2,
+    "grade": 1
+  },
+  "heavy_sd": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": "sd",
+    "price": 3,
+    "grade": 1
+  },
+  "easy_iw": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": "iw",
+    "price": 1,
+    "grade": 1
+  },
+  "medium_iw": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": "iw",
+    "price": 2,
+    "grade": 1
+  },
+  "heavy_iw": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": "iw",
+    "price": 3,
+    "grade": 1
+  }
+}

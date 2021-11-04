@@ -14,9 +14,9 @@ func _on_activate_blank_pressed():
 		
 		if order.current["onslaught_player"] == null:
 			order.current["onslaught_player"] = player_name
-			impact.get_node("players/onslaught").set_values(blank)
+			impact.get_node("players/onslaught").set_values(blank,player_name)
 		else:
-			impact.get_node("players/retention").set_values(blank)
+			impact.get_node("players/retention").set_values(blank,player_name)
 		
 		order.jot_activate(player, blank)
 		blank.clean()

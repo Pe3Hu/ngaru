@@ -1,5 +1,6 @@
 extends Node
 
+
 var player_names = ["left_player","right_player"]
 var history = [ [] ]
 var current = {
@@ -131,7 +132,7 @@ func next_action():
 		var tabs = get_node("/root/main/bg/rows/tabs")
 		tabs.current_tab = 1
 		var impact = get_node("/root/main/impact_of_impacts")
-		impact.compute_breakaways()
+		impact.init_impact()
 		var timer = get_node("/root/main/global_timer")
 		timer.stop()
 	return

@@ -1,5 +1,6 @@
 extends Node
 
+
 var hand_size = 2
 var deck_size = 2
 
@@ -12,13 +13,13 @@ var player
 var preparation_hbox
 
 var rng = RandomNumberGenerator.new()
-	
-func init_blanks():		
+
+func init_blanks():
 	player = get_parent()
 	preparation_hbox = get_node("/root/main/bg/rows/tabs/preparation/grid/"+player.name)
 	
 	for _i in deck_size:
-		var blank = original_blank.instance()		
+		var blank = original_blank.instance()
 		blank.index = _i
 		var parent = preparation_hbox.get_node("blanks/rows/cols/childs")
 		parent.add_child(blank)

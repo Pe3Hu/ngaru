@@ -1,5 +1,6 @@
 extends Node
 
+
 var first_keys = ["cargo","recce","feint","depth","spoof"]
 var second_keys = ["onslaught","retention"]
 var vials_hand
@@ -31,11 +32,10 @@ func fill():
 							var first_key = stencil.first_keys[_j]
 							var second_key = stencil.second_keys[_i]
 							
-							
-								
 							var tendency_scale = get_parent().tendency[first_key] * get_parent().tendency[second_key]
 							var blank_priorities = blank.priorities[first_key][second_key]
 							var value = vial.charge[first_key][second_key] * tendency_scale * blank_priorities
+							
 							if value > 0:
 								if charge.keys().find(first_key) == -1:
 									charge[first_key] = {}

@@ -1,0 +1,110 @@
+{
+  "remove_lethal_sd": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": null,
+    "price": 5,
+    "grade": 1
+  },
+  "remove_vulnerable_sd": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": null,
+    "price": 3,
+    "grade": 1
+  },
+  "remove_ordinary_sd": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": null,
+    "price": 1,
+    "grade": 1
+  },
+  "add_ordinary_sd": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": null,
+    "price": 1,
+    "grade": 1
+  },
+  "add_covered_sd": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": null,
+    "price": 2,
+    "grade": 1
+  },
+  "add_impregnable_sd": {
+    "S": 5,
+    "D": 5,
+    "I": 0,
+    "W": 0,
+    "ism": null,
+    "price": 4,
+    "grade": 1
+  },
+  "remove_lethal_iw": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": null,
+    "price": 5,
+    "grade": 1
+  },
+  "remove_vulnerable_iw": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": null,
+    "price": 3,
+    "grade": 1
+  },
+  "remove_ordinary_iw": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": null,
+    "price": 1,
+    "grade": 1
+  },
+  "add_ordinary_iw": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": null,
+    "price": 1,
+    "grade": 1
+  },
+  "add_covered_iw": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": null,
+    "price": 2,
+    "grade": 1
+  },
+  "add_impregnable_iw": {
+    "S": 0,
+    "D": 0,
+    "I": 5,
+    "W": 5,
+    "ism": null,
+    "price": 4,
+    "grade": 1
+  }
+}

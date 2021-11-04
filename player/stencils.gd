@@ -7,13 +7,13 @@ var current_hand = []
 var draw_deck = []
 var discard_deck = []
 
-var path_stencil_types = "res://stencil/stencil_types.json"
 var original_stencil = preload("res://stencil/stencil.tscn")
 var player
 var preparation_hbox
 var stencil_types = []
 
 var rng = RandomNumberGenerator.new()
+
 
 func save():
 	var save_data = File.new()	
@@ -49,33 +49,20 @@ func save():
 		
 		dictionary["int"].append(n)	
 		
-	save_data.open("res://stencil/stencil_types.json", File.WRITE)
+	save_data.open("res://data/stencil_data.json", File.WRITE)
 	save_data.store_line(to_json(dictionary))
 	save_data.close()
 	
-func load_stencil_types():
-	var open_file: File = File.new()	
-	
-	if not open_file.file_exists(path_stencil_types):
-		return
-		
-	open_file.open(path_stencil_types, File.READ)	
-	
-	while open_file.get_position() < open_file.get_len():
-		var data: Dictionary = parse_json(open_file.get_line())
-		stencil_types.push_back(data)
-	
-func init_stencils():	
-	load_stencil_types()
+func init_stencils():
 	player = get_parent()
 	preparation_hbox = get_node("/root/main/bg/rows/tabs/preparation/grid/"+player.name)
 	
 	for _i in deck_size:
 		var stencil = original_stencil.instance()
 		rng.randomize()
-		var _j = 0;
-		var index = _i % stencil_types[_j]["binary"].size()#floor(rng.randf_range(0, stencil_types[_j]["binary"].size()))
-		var type = stencil_types[_j]["binary"][index]
+		var data = data_import.data["stencil"]["binary"]
+		var index = _i % data.size()#floor(rng.randf_range(0, stencil_types[_j]["binary"].size()))
+		var type = data[index]
 		stencil.set_flags(type)
 		var parent = preparation_hbox.get_node("stencils/cols/childs")
 		parent.add_child(stencil)

@@ -1,157 +1,65 @@
 extends Node
  
-var first_keys = ["capacity", "resistance", "replenishment", "inside", "outside", "reaction"]
-var second_keys = ["S", "D", "I", "W"]
-var arguments = {
-	"capacity":
-		{
-		"S":
-			{
-				"name": "vitality",
-				"value": 0
-			},
-		"D":
-			{
-				"name": "plasticity",
-				"value": 0
-			},
-		"I":
-			{
-				"name": "erudition",
-				"value": 0
-			},
-		"W":
-			{
-				"name": "mood",
-				"value": 0
-			}
-		},	
-	"resistance":
-		{
-		"S":
-			{
-				"name": "fastness",
-				"value": 0
-			},
-		"D":
-			{
-				"name": "immediacy",
-				"value": 0
-			},
-		"I":
-			{
-				"name": "invention",
-				"value": 0
-			},
-		"W":
-			{
-				"name": "sangfroid",
-				"value": 0
-			}
-		},	
-	"replenishment":
-		{
-		"S":
-			{
-				"name": "regeneration",
-				"value": 0
-			},
-		"D":
-			{
-				"name": "massage",
-				"value": 0
-			},
-		"I":
-			{
-				"name": "meditation",
-				"value": 0
-			},
-		"W":
-			{
-				"name": "mantra",
-				"value": 0
-			}
-		},	
-	"inside":
-		{
-		"S":
-			{
-				"name": "diversion",
-				"value": 0
-			},
-		"D":
-			{
-				"name": "postiche",
-				"value": 0
-			},
-		"I":
-			{
-				"name": "disinformation",
-				"value": 0
-			},
-		"W":
-			{
-				"name": "bluff",
-				"value": 0
-			}
-		},	
-	"outside":
-		{
-		"S":
-			{
-				"name": "savvy",
-				"value": 0
-			},
-		"D":
-			{
-				"name": "advertence",
-				"value": 0
-			},
-		"I":
-			{
-				"name": "observancy",
-				"value": 0
-			},
-		"W":
-			{
-				"name": "prophecy",
-				"value": 0
-			}
-		},	
-	"reaction":
-		{
-		"S":
-			{
-				"name": "instinct",
-				"value": 0
-			},
-		"D":
-			{
-				"name": "reflex",
-				"value": 0
-			},
-		"I":
-			{
-				"name": "prescience",
-				"value": 0
-			},
-		"W":
-			{
-				"name": "intuition",
-				"value": 0
-			}
-		}	
-	}
 
-func _ready():
-	var default_value = 10
-	
-	for _f_key in first_keys:
-		for _s_key in second_keys:
-			arguments[_f_key][_s_key]["value"] = default_value
-	
-func add_to_argumetn(_f_key, _s_key, _value):
+var fifth_keys = ["capacity","resistance","tension","replenishment","inside","outside","reaction"]
+var sixth_keys = ["S","D","I","W"]
+var arguments
+var milestones
+
+var rng = RandomNumberGenerator.new()
+
+func add_to_argument(_f_key, _s_key, _value):
 	arguments[_f_key][_s_key]["value"] += _value
 	
-func get_argumetn(_f_key, _s_key, _value):
+func get_argument(_f_key, _s_key):
 	return arguments[_f_key][_s_key]["value"]
+
+func init_sdiw():
+	var default_value = 10
+	var counts = [1,2,3,5,5,3,2,1]
+	var values = [-4,-3,-2,-1,1,2,3,4]
+	var bias = []
+	
+	for _i in values.size():
+		for _j in counts[_i]:
+			bias.append(values[_i])
+	
+	var l = fifth_keys.size() * sixth_keys.size()
+	
+	while bias.size() < l:
+		bias.append(0)
+	
+	bias.shuffle()
+	var _i = 0
+	
+	arguments = {}
+	
+	for _f_key in fifth_keys:
+		arguments[_f_key] = {}
+		
+		for _s_key in sixth_keys:
+			arguments[_f_key][_s_key] = {
+				"name": data_import.data["sdiw"][_f_key][_s_key],
+				"value": default_value + bias[_i]
+			}
+			
+			_i += 1
+
+func update_milestones():
+	milestones = {}
+	
+	for _s_key in sixth_keys:
+		milestones[_s_key] = 0
+	
+	for _f_key in fifth_keys:
+		milestones[_f_key] = 0
+		
+		for _s_key in sixth_keys:
+			milestones[_f_key] += arguments[_f_key][_s_key]["value"]
+			milestones[_s_key] += arguments[_f_key][_s_key]["value"]
+	
+	print(milestones)
+	
+func _ready():
+	init_sdiw()
+	update_milestones()
