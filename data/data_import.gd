@@ -2,7 +2,6 @@ extends Node
 
 
 var first_keys = ["cargo","depth","feint","recce","spoof"]
-var data = {}
 var paths = {
 	"vial": "res://data/ngaru - vial.json",
 	"stencil": "res://data/stencil_data.json",
@@ -16,6 +15,17 @@ var paths = {
 	"impact_recce": "res://data/ngaru - impact_recce.json",
 	"impact_spoof": "res://data/ngaru - impact_spoof.json"
 }
+var data = {}
+
+func formula_res(_value, _d):
+	var result = float(_d) / (_d + _value)
+	if _value < 0:
+		result = 2 - result
+	return result
+	
+func formula_pen(_value, _d):
+	var result = float(_d + _value) / _d
+	return result
 
 func _ready():
 	

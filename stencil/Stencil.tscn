@@ -48,30 +48,26 @@ margin_bottom = 52.0
 custom_icons/checked = ExtResource( 6 )
 custom_icons/unchecked = ExtResource( 3 )
 
-[node name="recce" type="VBoxContainer" parent="flags"]
+[node name="depth" type="VBoxContainer" parent="flags"]
 margin_left = 28.0
 margin_right = 52.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 20, 0 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="onslaught" type="CheckBox" parent="flags/recce"]
+[node name="onslaught" type="CheckBox" parent="flags/depth"]
 margin_right = 24.0
 margin_bottom = 24.0
-rect_min_size = Vector2( 15, 15 )
-custom_icons/checked = ExtResource( 7 )
+custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 3 )
-align = 1
 
-[node name="retention" type="CheckBox" parent="flags/recce"]
+[node name="retention" type="CheckBox" parent="flags/depth"]
 margin_top = 28.0
 margin_right = 24.0
 margin_bottom = 52.0
-rect_min_size = Vector2( 15, 15 )
-custom_icons/checked = ExtResource( 7 )
+custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 3 )
-align = 1
 
 [node name="feint" type="VBoxContainer" parent="flags"]
 margin_left = 56.0
@@ -94,26 +90,30 @@ margin_bottom = 52.0
 custom_icons/checked = ExtResource( 4 )
 custom_icons/unchecked = ExtResource( 3 )
 
-[node name="depth" type="VBoxContainer" parent="flags"]
+[node name="recce" type="VBoxContainer" parent="flags"]
 margin_left = 84.0
 margin_right = 108.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 20, 0 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="onslaught" type="CheckBox" parent="flags/depth"]
+[node name="onslaught" type="CheckBox" parent="flags/recce"]
 margin_right = 24.0
 margin_bottom = 24.0
-custom_icons/checked = ExtResource( 5 )
+rect_min_size = Vector2( 15, 15 )
+custom_icons/checked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 3 )
+align = 1
 
-[node name="retention" type="CheckBox" parent="flags/depth"]
+[node name="retention" type="CheckBox" parent="flags/recce"]
 margin_top = 28.0
 margin_right = 24.0
 margin_bottom = 52.0
-custom_icons/checked = ExtResource( 5 )
+rect_min_size = Vector2( 15, 15 )
+custom_icons/checked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 3 )
+align = 1
 
 [node name="spoof" type="VBoxContainer" parent="flags"]
 margin_left = 112.0

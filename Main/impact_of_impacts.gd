@@ -56,11 +56,14 @@ func compute_efficiency_multipliers():
 		var _another_key = second_keys[_j]
 		var advantage = advantages.get_node(_key)
 		var another_advantage = advantages.get_node(_another_key)
-		var n = advantage.player.get_node("sdiw").milestones["inside"] * (1 + advantage.nodes["spoof"]["sqrt_value"])
-		var m = another_advantage.player.get_node("sdiw").milestones["outside"] * (1 + another_advantage.nodes["recce"]["sqrt_value"])
-	
-		advantage.efficiency_multiplier = n/m
 		
+		var base_inside = data_import.formula_pen(advantage.player.get_node("sdiw").milestones["inside"],100) 
+		var impact_spoof = data_import.formula_pen(advantage.nodes["spoof"]["sqrt_value"],10) 
+		
+		var base_outside = data_import.formula_res(another_advantage.player.get_node("sdiw").milestones["outside"],100) 
+		var impact_recce = data_import.formula_res(another_advantage.nodes["recce"]["sqrt_value"],10) 
+		
+		advantage.efficiency_multiplier = base_inside*impact_spoof*base_outside*impact_recce
 	
 func update_labels():
 	clean_labels()
